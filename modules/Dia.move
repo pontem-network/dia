@@ -12,7 +12,6 @@ module Dia {
     }
 
     /// Set new Value for sender, or overwrite existing data.  
-    /// 
     public fun setValue<Currency: store>(account: &signer, value: u128, timestamp: u64) acquires Value {
         let acc_addr = Signer::address_of(account);
 
