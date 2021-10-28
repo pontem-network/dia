@@ -1,4 +1,4 @@
-address 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY {
+address {{sender}} {
 /// Just currencies example.
 module DaiCurrencies {
     struct USDT has store, key {}

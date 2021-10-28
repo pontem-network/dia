@@ -1,4 +1,4 @@
-address 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY {
+address {{sender}} {
 module Dia {
     use 0x1::Signer;
     use 0x1::Errors;
