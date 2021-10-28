@@ -2,6 +2,10 @@
 
 [Dia Protocol](https://www.diadata.org/) smart contracts rewritten in Move language.
 
+Requirements:
+
+* [Dove](https://github.com/pontem-network/move-tools)
+
 ## Build
 
     dove build
