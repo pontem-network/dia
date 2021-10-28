@@ -1,4 +1,4 @@
-# Dia Smart Contract
+# Dia Smart Contracts
 
 [Dia Protocol](https://www.diadata.org/) smart contracts rewritten in Move language.
 
