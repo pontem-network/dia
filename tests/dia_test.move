@@ -1,17 +1,33 @@
 address {{sender}} {
     module DiaTest {
         use 0x1::Signer;
+        use 0x1::DiemAccount;
+        use {{sender}}::Initializer;
         use {{sender}}::Dia;
         use {{sender}}::DiaCurrencies::{BTC, USDT, DIA};
-
+    
+        /// Errors.
         const EVALUE_NOT_MATCH: u64 = 101;
         const ETS_NOT_MATCH: u64 = 102;
 
+        fun initialize_test(dr: &signer, tr: &signer, account: &signer) {
+            Initializer::initialize(dr, tr, 101);
+            Initializer::register_currency<BTC>(dr, b"BTC");
+            Initializer::register_currency<USDT>(dr, b"USDT");
+            Initializer::register_currency<DIA>(dr, b"DIA");
+
+            DiemAccount::create_parent_vasp_account<BTC>(tr, Signer::address_of(account), x"", x"", true);
+        }
+
         #[test(
+            dr = @0xA550C18,
+            tr = @0xB1E55ED,
             account = @5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY,
         )]
         /// Test set value.
-        fun test_set_value(account: signer) {
+        fun test_set_value(dr: signer, tr: signer, account: signer) {
+            initialize_test(&dr, &tr, &account);
+
             let acc_addr = Signer::address_of(&account);
 
             // value and timestamp.
@@ -30,10 +46,14 @@ address {{sender}} {
 
 
         #[test(
+            dr = @0xA550C18,
+            tr = @0xB1E55ED,
             account = @5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY,
         )]
         /// Test rewrite value.
-        fun test_rewrite_value(account: signer) {
+        fun test_rewrite_value(dr: signer, tr: signer, account: signer) {
+            initialize_test(&dr, &tr, &account);
+
             let acc_addr = Signer::address_of(&account);
 
             // value and timestamp.
@@ -65,9 +85,13 @@ address {{sender}} {
 
         // Different currencies.
         #[test(
+            dr = @0xA550C18,
+            tr = @0xB1E55ED,
             account = @5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY,
         )]
-        fun test_diff_curr(account: signer) {
+        fun test_diff_curr(dr: signer, tr: signer, account: signer) {
+            initialize_test(&dr, &tr, &account);
+
             let acc_addr = Signer::address_of(&account);
 
             // value and timestamp.
