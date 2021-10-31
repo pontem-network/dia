@@ -10,7 +10,7 @@ Checklist:
 
 * ✅ Contracts: Dia and test currencies.
 * ✅ Tests.
-* 🚧 Events - still in progress.
+* ✅ Events - still in progress.
 
 ## Build
 
