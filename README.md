@@ -8,9 +8,9 @@ Requirements:
 
 Checklist:
 
-[*] Contracts: Dia and test currencies.
-[*] Tests.
-[] Events.
+* ✅ Contracts: Dia and test currencies.
+* ✅ Tests.
+* 🚧 Events - still in progress.
 
 ## Build
 
