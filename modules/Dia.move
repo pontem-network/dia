@@ -18,7 +18,6 @@ module Dia {
     const ENOT_EXISTS: u64 = 101;
 
     /// Storage.
-
     /// Value can be stored in storage, contains current value and timestamp.
     /// C1 and C2 is pair generics of currency, e.g. BTC/USDT, DIA/USDT, DIA/PONT.
     struct Value<C1: store, C2: store> has key, store {
