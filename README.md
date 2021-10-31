@@ -6,6 +6,12 @@ Requirements:
 
 * [Dove](https://github.com/pontem-network/move-tools)
 
+Checklist:
+
+[*] Contracts: Dia and test currencies.
+[*] Tests.
+[] Events.
+
 ## Build
 
     dove build
