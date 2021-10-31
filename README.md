@@ -10,7 +10,7 @@ Requirements:
 
     dove build
 
-See `artifcasts` folder for compiled files.
+After, see `artifacts` folder for compiled files.
 
 ### Tests
 
