@@ -61,7 +61,7 @@ Where:
     * `seed` - seed from your account.
     * `ws` - address of Websocket endpoint. In case of Pontem testnet it's `wss://testnet.pontem.network/ws`.
 
-The contracts should be available on `address::Dia`.
+The contracts should be available on `your_address::Dia`.
 
 ### LICENSE 
 
