@@ -24,6 +24,45 @@ After, see `artifacts` folder for compiled files.
 
 See [tests](./tests/dia_test.move) for details.
 
+### Deployment
+
+You should have PONT tokens on your account.
+
+Replace/add your Pontem address in Dove.toml with address of your own account:
+
+    account_address = "your address"
+
+Build modules:
+
+    dove build
+
+Create your account inside Diem Standard Library, if you haven't created one yet:
+
+    dove tx 'create_account(tr, <your address>)'
+
+Replace `<your address>` with correct one.
+
+Execute transaction:
+
+    polkadot-js-api tx.mvm.execute @./artifacts/transactions/create_account.mvt 100000 --seed "<seed>" --ws <ws>
+
+Where:
+
+    * `seed` - seed from your account.
+    * `ws` - address of Websocket endpoint. In case of Pontem testnet it's `wss://testnet.pontem.network/ws`.
+
+
+Deploy Dia.move module:
+
+    polkadot-js-api tx.mvm.publishModule @./artifacts/modules/1_Dia.mv 100000 --seed "<seed>" --ws <ws>
+
+Where:
+
+    * `seed` - seed from your account.
+    * `ws` - address of Websocket endpoint. In case of Pontem testnet it's `wss://testnet.pontem.network/ws`.
+
+The contracts should be available on `address::Dia`.
+
 ### LICENSE 
 
 MIT.
