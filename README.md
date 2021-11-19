@@ -40,7 +40,7 @@ Create your account inside Diem Standard Library, if you haven't created one yet
 
     dove tx 'create_account(tr, <your address>)'
 
-Replace `<your address>` with correct one.
+Replace `<your address>` with the correct one, it's important to use the same account address you are going to use to update oracle values.
 
 Execute transaction:
 
