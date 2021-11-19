@@ -35,10 +35,10 @@ address {{sender}} {
             let timestamp = 1635454933;
 
             // Set value for transaction sender.
-            Dia::setValue<BTC, USDT>(&account, value, timestamp);
+            Dia::setValue<BTC>(&account, value, timestamp);
 
             // Get value and match.
-            let (v, t) = Dia::getValue<BTC, USDT>(acc_addr);
+            let (v, t) = Dia::getValue<BTC>(acc_addr);
 
             assert(v == value, EVALUE_NOT_MATCH);
             assert(t == timestamp, ETS_NOT_MATCH);
@@ -61,10 +61,10 @@ address {{sender}} {
             let timestamp = 1635454933;
 
             // Set value for transaction sender.
-            Dia::setValue<BTC, USDT>(&account, value, timestamp);
+            Dia::setValue<BTC>(&account, value, timestamp);
 
             // Get value and match.
-            let (v, t) = Dia::getValue<BTC, USDT>(acc_addr);
+            let (v, t) = Dia::getValue<BTC>(acc_addr);
 
             assert(v == value, 101);
             assert(t == timestamp, 102);
@@ -73,10 +73,10 @@ address {{sender}} {
             let new_value = 6119855;
             let new_timestamp = 1635455000;
 
-            Dia::setValue<BTC, USDT>(&account, new_value, new_timestamp);
+            Dia::setValue<BTC>(&account, new_value, new_timestamp);
 
             // Get new values and match.
-            let (new_v, new_t) = Dia::getValue<BTC, USDT>(acc_addr);
+            let (new_v, new_t) = Dia::getValue<BTC>(acc_addr);
 
             assert(new_v == new_value, EVALUE_NOT_MATCH);
             assert(new_t == new_timestamp, ETS_NOT_MATCH);
@@ -95,27 +95,27 @@ address {{sender}} {
             let acc_addr = Signer::address_of(&account);
 
             // value and timestamp.
-            let btc_usdt_value = 6120223; // Two decimals.
-            let btc_usdt_timestamp = 1635454933;
+            let btc_value = 6120223; // Two decimals.
+            let btc_timestamp = 1635454933;
 
             // Set value for transaction sender.
-            Dia::setValue<BTC, USDT>(&account, btc_usdt_value, btc_usdt_timestamp);
+            Dia::setValue<BTC>(&account, btc_value, btc_timestamp);
 
             // value and timestamp.
-            let dia_usdt_value = 169; // Two decimals.
-            let dia_usdt_timestamp = 1635454933;
+            let dia_value = 169; // Two decimals.
+            let dia_timestamp = 1635454933;
 
             // Set value for transaction sender.
-            Dia::setValue<DIA, USDT>(&account, dia_usdt_value, dia_usdt_timestamp);
+            Dia::setValue<DIA>(&account, dia_value, dia_timestamp);
 
-            let (btc_usdt_v, btc_usdt_t) = Dia::getValue<BTC, USDT>(acc_addr);
-            let (dia_usdt_v, dia_usdt_t) = Dia::getValue<DIA, USDT>(acc_addr);
+            let (btc_v, btc_t) = Dia::getValue<BTC>(acc_addr);
+            let (dia_v, dia_t) = Dia::getValue<DIA>(acc_addr);
 
-            assert(btc_usdt_v == btc_usdt_value, 101);
-            assert(btc_usdt_t == btc_usdt_timestamp, 102);
+            assert(btc_v == btc_value, 101);
+            assert(btc_t == btc_timestamp, 102);
             
-            assert(dia_usdt_v == dia_usdt_value, 201);
-            assert(dia_usdt_t == dia_usdt_timestamp, 202);
+            assert(dia_v == dia_value, 201);
+            assert(dia_t == dia_timestamp, 202);
         }
     }
 }
