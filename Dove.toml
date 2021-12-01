@@ -3,5 +3,5 @@ name = "dia"
 dialect = "pont"
 
 dependencies = [
-    { git = "https://github.com/pontem-network/move-stdlib", tag = "v0.3.0"}
+    { git = "https://github.com/pontem-network/pont-stdlib", tag = "v0.3.0"}
 ]
