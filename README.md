@@ -4,7 +4,7 @@
 
 Requirements:
 
-* [Dove](https://github.com/pontem-network/move-tools)
+* [Dove 1.3.3](https://github.com/pontem-network/move-tools/releases/tag/1.3.3)
 * [Polkadot JS CLI](https://www.npmjs.com/package/@polkadot/api-cli)
 
 Checklist:
