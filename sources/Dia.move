@@ -1,9 +1,8 @@
-address {{sender}} {
-module Dia {
-    use 0x1::Signer;
-    use 0x1::Diem;
-    use 0x1::Errors;
-    use 0x1::Event::{Self, EventHandle};
+module Sender::Dia {
+    use Std::Signer;
+    use Std::Errors;
+    use Std::Event::{Self, EventHandle};
+    use PontemFramework::Pontem;
 
     /// Events.
     struct OracleUpdate has store, drop {
@@ -19,18 +18,18 @@ module Dia {
     /// Storage.
     /// Value can be stored in storage, contains current value and timestamp.
     /// C is currency generic, e.g. BTC, KSM, PONT, etc.
-    struct Value<C: store> has key, store {
+    struct Value<phantom C: store> has key, store {
         value: u128,
         timestamp: u64,
         oracle_updates: EventHandle<OracleUpdate>,
     }
 
     /// Set new Value for sender, or overwrite existing data.  
-    public fun setValue<C: store>(account: &signer, value: u128, timestamp: u64) acquires Value {
+    public fun set_value<C: store>(account: &signer, value: u128, timestamp: u64) acquires Value {
         // Get address of transaction signer.
         let acc_addr = Signer::address_of(account);
 
-        let currency_code = getCurCode<C>();
+        let currency_code = get_currency_code<C>();
 
         // Check if Value already exists in storage on signer address.
         if (exists<Value<C>>(acc_addr)) {
@@ -75,7 +74,7 @@ module Dia {
 
     /// Get current values for Currency, stored on account.
     /// Returns value and timestamp.
-    public fun getValue<C: store>(account: address): (u128, u64) acquires Value  {
+    public fun get_value<C: store>(account: address): (u128, u64) acquires Value  {
         assert(exists<Value<C>>(account), Errors::custom(ENOT_EXISTS));
 
         let stored = borrow_global<Value<C>>(account);
@@ -83,10 +82,7 @@ module Dia {
     }
 
     /// Get currency pair code, e.g. BTC/USDT.
-    public fun getCurCode<C: store>(): vector<u8> {
-        Diem::assert_is_currency<C>();
-
-        Diem::currency_code<C>()
+    public fun get_currency_code<C: store>(): vector<u8> {
+        Pontem::currency_code<C>()
     }
-}
 }

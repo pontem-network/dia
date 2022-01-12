@@ -4,7 +4,7 @@
 
 Requirements:
 
-* [Dove 1.3.3](https://github.com/pontem-network/move-tools/releases/tag/1.3.3)
+* [Dove 1.5.1](https://github.com/pontem-network/move-tools/releases/tag/1.5.1)
 * [Polkadot JS CLI](https://www.npmjs.com/package/@polkadot/api-cli)
 
 Checklist:
@@ -15,15 +15,15 @@ Checklist:
 
 ## Build
 
-    dove build
+    dove package build
 
 After, see `artifacts` folder for compiled files.
 
 ### Tests
 
-    dove test
+    dove package test
 
-See [tests](./tests/dia_test.move) for details.
+See [tests](./tests/DiaTests.move) for details.
 
 ### Deployment
 
@@ -35,7 +35,7 @@ Replace/add your Pontem address in Dove.toml with address of your own account:
 
 Build modules:
 
-    dove build
+    dove package build
 
 Create your account inside Diem Standard Library, if you haven't created one yet:
 

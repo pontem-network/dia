@@ -1,0 +1,15 @@
+[package]
+name = "dia"
+version = "0.0.0"
+dialect = "pont"
+
+[addresses]
+Sender = "0x1"
+DiemRoot = "0xA550C18"
+
+# TODO: move to inline addresses in tests
+TestAccount = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+
+[dependencies]
+MoveStdlib = { git = "https://github.com/pontem-network/move-stdlib", rev = "main" }
+PontStdlib = { git = "https://github.com/pontem-network/pont-stdlib", rev = "fix-tests" }
