@@ -1,6 +1,6 @@
 script {
     use Std::Signer;
-    use Sender::Dia;
+    use DiaRoot::Dia;
 
     /// Set value.
     /// C is currency generic, e.g. BTC, KSM, PONT, etc.

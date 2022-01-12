@@ -1,4 +1,4 @@
-module Sender::Dia {
+module DiaRoot::Dia {
     use Std::Signer;
     use Std::Errors;
     use Std::Event::{Self, EventHandle};

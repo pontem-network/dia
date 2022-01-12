@@ -1,5 +1,5 @@
 script {
-    use Sender::Dia;
+    use DiaRoot::Dia;
 
     /// Get value.
     /// C is currency generic, e.g. BTC, KSM, PONT, etc.

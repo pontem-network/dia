@@ -1,9 +1,9 @@
 #[test_only]
-module Sender::DiaTests {
+module DiaRoot::DiaTests {
     use Std::Signer;
     use PontemFramework::Genesis;
-    use Sender::Dia;
-    use Sender::DiaCurrencies::{BTC, DIA};
+    use DiaRoot::Dia;
+    use DiaRoot::DiaCurrencies::{BTC, DIA};
 
     /// Errors.
     const EVALUE_NOT_MATCH: u64 = 101;

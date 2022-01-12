@@ -1,4 +1,4 @@
-module Sender::DiaCurrencies {
+module DiaRoot::DiaCurrencies {
     struct USDT has store, key {}
     struct BTC has store, key {}
     struct DIA has store, key {}
