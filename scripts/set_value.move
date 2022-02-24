@@ -4,14 +4,14 @@ script {
 
     /// Set value.
     /// C is currency generic, e.g. BTC, KSM, PONT, etc.
-    fun set_value<C: store>(account: signer, value: u128, timestamp: u64) {
+    fun set_value<From, To>(account: signer, value: u128, timestamp: u64) {
         let acc_addr = Signer::address_of(&account);
 
-        Dia::set_value<C>(&account, value, timestamp);
+        Dia::set_price_value<From, To>(&account, value, timestamp);
 
-        let (v, t) = Dia::get_value<C>(acc_addr);
+        let (v, t) = Dia::get_price_value<From, To>(acc_addr);
 
-        assert(v == value, 101);
-        assert(t == timestamp, 102);
+        assert!(v == value, 101);
+        assert!(t == timestamp, 102);
     }
 }
