@@ -21,8 +21,22 @@ module DiaRoot::Dia {
         timestamp: u64,
     }
 
-    /// Set new Value for sender, or overwrite existing data.  
-    public fun set_price_value<From, To>(acc: &signer, value: u128, timestamp: u64) acquires Price {
+    /// Get current values for Currency, stored on account.
+    /// Returns value and timestamp.
+    public fun get_price<From, To>(account: address): (u128, u64) acquires Price {
+        assert!(exists<Price<From, To>>(account), Errors::custom(ERR_PRICE_DOES_NOT_EXIST));
+
+        let price = borrow_global<Price<From, To>>(account);
+        (price.value, price.timestamp)
+    }
+
+    public fun has_price<From, To>(account: address): bool {
+        exists<Price<From, To>>(account)
+    }
+
+    #[test_only]
+    /// Set new Value for sender, or overwrite existing data.
+    public fun set_price<From, To>(acc: &signer, value: u128, timestamp: u64) acquires Price {
         // Get address of transaction signer.
         let acc_addr = Signer::address_of(acc);
 
@@ -42,14 +56,5 @@ module DiaRoot::Dia {
                 &mut updates, PriceChangeEvent<From, To> { value, timestamp });
             move_to(acc, Price<From, To> { value, timestamp, updates });
         };
-    }
-
-    /// Get current values for Currency, stored on account.
-    /// Returns value and timestamp.
-    public fun get_price_value<From, To>(account: address): (u128, u64) acquires Price {
-        assert!(exists<Price<From, To>>(account), Errors::custom(ERR_PRICE_DOES_NOT_EXIST));
-
-        let price = borrow_global<Price<From, To>>(account);
-        (price.value, price.timestamp)
     }
 }
