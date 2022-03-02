@@ -1,10 +1,10 @@
 script {
-    use {{sender}}::Dia;
+    use DiaRoot::Dia;
 
     /// Get value.
     /// C is currency generic, e.g. BTC, KSM, PONT, etc.
-    fun get_value<C: store>(account: address) {
-        let (_v, _t) = Dia::getValue<C>(account);
+    fun get_value<From, To>(account: address) {
+        let (_v, _t) = Dia::get_price<From, To>(account);
         // Use v and t values...
     }
 }

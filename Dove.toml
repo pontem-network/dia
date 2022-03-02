@@ -1,7 +1,0 @@
-[package]
-name = "dia"
-dialect = "pont"
-
-dependencies = [
-    { git = "https://github.com/pontem-network/pont-stdlib", tag = "v0.3.0"}
-]
